@@ -15,8 +15,6 @@ However, provisioning an environment with the toolchain and an updated west envi
 
 If you want stable Docker images or have custom needs, use the [Dockerfile](./Dockerfile) in this repository as an example to build your own Docker image.
 
-For Matter applications, check out [nrfconnect-chip-docker](https://github.com/NordicPlayground/nrfconnect-chip-docker/).
-
 For Zephyr applications, check out the [Zephyr Docker images](https://github.com/zephyrproject-rtos/docker-image/pkgs/container/ci#zephyr-docker-images).
 
 ## Setup
