@@ -1,3 +1,8 @@
+> [!TIP]
+> The recommended way of building nRF Connect projects in CI is to use the [Zephyr Docker images](https://github.com/zephyrproject-rtos/docker-image/pkgs/container/ci#zephyr-docker-images).  
+> Example 1: [hello.nrfcloud.com/firmware](https://github.com/hello-nrfcloud/firmware/blob/4626d2a97b1414095b5b66032931e3f4af1017ce/.github/workflows/build.yml#L59)  
+> Example 2: [ZSWatch firmware](https://github.com/jakkra/ZSWatch/blob/81adcb962e359b7da0557a631654334c0ccd22e1/.github/workflows/build.yml#L6)
+
 # Dockerfile example for building nRF Connect SDK applications on GitHub Actions
 
 ![Publish Docker](https://github.com/NordicPlayground/nrf-docker/workflows/Publish%20Docker/badge.svg?branch=saga)
