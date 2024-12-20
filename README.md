@@ -1,7 +1,7 @@
 # Dockerfile example for building nRF Connect SDK applications on GitHub Actions
 
 ![Publish Docker](https://github.com/NordicPlayground/nrf-docker/workflows/Publish%20Docker/badge.svg?branch=saga)
-(_the [Docker image](https://hub.docker.com/r/nordicplayground/nrfconnect-sdk) is build against [nRF Connect SDK](https://github.com/nrfconnect/sdk-nrf) `main`, and the last 5 release branches every night._)
+(_the [Docker image](https://hub.docker.com/r/nordicplayground/nrfconnect-sdk) is build against [nRF Connect SDK](https://github.com/nrfconnect/sdk-nrf) the last 5 release branches every night._)
 
 ![Docker + Zephyr -> merged.hex](./diagram.png)
 
@@ -37,7 +37,7 @@ Build the image (this is only needed once):
 
 ```bash
 cd nrf-docker
-docker build -t nrfconnect-sdk --build-arg sdk_nrf_version=v2.7-branch .
+docker build -t nrfconnect-sdk --build-arg sdk_nrf_version=v2.9-branch .
 ```
 
 > [!NOTE]
@@ -61,13 +61,13 @@ docker build -t nrfconnect-sdk --build-arg sdk_nrf_version=v2.7-branch .
 > [!NOTE]
 > The prebuilt images are only available for `amd64` architecture (Linux).
 
-To use the pre-built image [`nordicplayground/nrfconnect-sdk:main`](https://hub.docker.com/r/nordicplayground/nrfconnect-sdk); add `nordicplayground/` before the image name and `:tag` after. Replace `tag` with one of the [available tags](https://hub.docker.com/r/nordicplayground/nrfconnect-sdk/tags) on the Dockerhub image. The only difference between the tags are which Python dependencies are pre-installed in the image based on the different `requirements.txt` files from the nRF Connect SDK repository's west dependencies.
+Pre-built images are available as [`nordicplayground/nrfconnect-sdk`](https://hub.docker.com/r/nordicplayground/nrfconnect-sdk).
 
 ```bash
-docker run --rm -v ${PWD}:/workdir/project nordicplayground/nrfconnect-sdk:main ...
+docker run --rm -v ${PWD}:/workdir/project nordicplayground/nrfconnect-sdk:v2.9-branch ...
 ```
 
-The rest of the documentation will use the local name `nrfconnect-sdk`, but any of them can use `nordicplayground/nrfconnect-sdk:main` (or a different tag) instead.
+The rest of the documentation will use the local name `nrfconnect-sdk`, but any of them can use `nordicplayground/nrfconnect-sdk:v2.9-branch` instead.
 
 ### Build the firmware
 
@@ -101,7 +101,7 @@ docker run --rm -v ${PWD}:/workdir/project \
 # build docker image
 git clone https://github.com/NordicPlayground/nrf-docker
 cd nrf-docker
-docker build -t nrfconnect-sdk --build-arg sdk_nrf_version=v2.7-branch .
+docker build -t nrfconnect-sdk --build-arg sdk_nrf_version=v2.9-branch .
 cd ..
 ```
 
@@ -110,7 +110,7 @@ cd ..
 This builds the `hci_uart` sample and stores the `hci_uart.hex` file in the current directory:
 
 ```bash
-docker run --rm nordicplayground/nrfconnect-sdk:main \
+docker run --rm nordicplayground/nrfconnect-sdk:v2.9-branch \
     -v ${PWD}:/workdir/project \
     west build zephyr/samples/bluetooth/hci_uart -p always -b nrf9160dk_nrf52840 --build-dir /workdir/project/build
 ls -la build/b0/zephyr && cp build/b0/zephyr/zephyr.hex ./hci_uart.hex
@@ -120,7 +120,7 @@ ls -la build/b0/zephyr && cp build/b0/zephyr/zephyr.hex ./hci_uart.hex
 
 ```bash
 # Init and build in Docker
-docker run --rm nordicplayground/nrfconnect-sdk:main \
+docker run --rm nordicplayground/nrfconnect-sdk:v2.9-branch \
   -v ${PWD}:/workdir/project \
   west build zephyr/samples/bluetooth/peripheral_ht -p always -b nrf52840dk_nrf52840 --build-dir /workdir/project/build
 
